@@ -1,0 +1,99 @@
+<!doctype html>
+<html amp lang="en">
+   <head>
+      <meta charset="utf-8">
+      <title>Hello AMPs</title>
+      <script async src="https://cdn.ampproject.org/v0.js"></script>
+      <!-- required for the amp-consent component -->
+      <script async custom-element="amp-consent" src="https://cdn.ampproject.org/v0/amp-consent-0.1.js"></script>
+      <!-- required for geo-targeting -->
+      <script async custom-element="amp-geo" src="https://cdn.ampproject.org/v0/amp-geo-0.1.js"></script>
+      <!-- required to sync auth_id with publishers domain and Google.com domain --> 
+      <script async custom-element="amp-analytics" src="https://cdn.ampproject.org/v0/amp-analytics-0.1.js"></script>
+      <style type="text/css">
+        body.amp-geo-group-eea #ccpa-consent-ui ,
+        body:not(.amp-geo-group-eea) #eea-consent-ui {
+           display: none;
+        }
+  </style>  
+   </head>
+   <body>
+      <h1>Welcome to the mobile web CCPA & GDPR</h1>  
+      <amp-analytics type="googleanalytics">
+         <script type=application/json> 
+            {
+               "linkers": {
+                  "authId": {
+                     "ids": {
+                        "_a":"CLIENT_ID(AMP-CONSENT)"
+                     },
+                     "enabled":true,
+                     "proxyOnly":false
+                  }
+               },
+               "cookies": {
+                  "enabled":true,
+                  "authId": { 
+                     "value":"LINKER_PARAM(authId, _a)"
+                  }
+               }
+            }
+         </script>
+      </amp-analytics>
+      <amp-geo layout="nodisplay">
+         <script type="application/json">
+            {
+               "ISOCountryGroups": {
+                  "eea": ["preset-eea"],
+                  "ccpa": ["preset-us-ca"]
+               }
+            }
+         </script>
+      </amp-geo>
+      <amp-consent id='consent' layout='nodisplay'>
+         <script type="application/json">
+            {
+               "consentRequired": false,
+               "checkConsentHref": false,
+               "consentInstanceId": "sourcepoint",
+               "promptUISrc": "https://cdn.sp-stage.net/amp/unified/index.html?authId=CLIENT_ID&source_url=SOURCE_URL",
+               "clientConfig": {
+                  "accountId": 22,
+                  "propertyHref": "https://sca-amp-unified",
+                  "stageCampaign": false,
+                  "initialHeight": 80
+               },
+               "geoOverride": {
+                  "eea": {
+                     "consentRequired": "remote",
+                     "checkConsentHref": "https://cdn.privacy-mgmt.com/wrapper/tcfv2/v1/amp-v2?authId=CLIENT_ID",                                          
+                     "postPromptUI": "eea-consent-ui",
+                     "clientConfig": {                      
+                        "privacyManagerId": 28433,
+                        "targetingParams": {"darkmode":"true"},
+                        "pmTab": "purposes"     
+                
+                     }
+                  },
+                  "ccpa": {
+                     "consentRequired": "remote",
+                     "checkConsentHref": "https://cdn.privacy-mgmt.com/wrapper/ccpa/amp-v2?authId=CLIENT_ID",
+                     "postPromptUI": "ccpa-consent-ui",
+                     "clientConfig": {
+                        "isCCPA": true,
+                        "targetingParams": {"darkmode":"true"},
+                        "privacyManagerId": 28448
+                     }
+                  }
+               }
+            }
+         </script>
+      </amp-consent>
+      <div id="eea-consent-ui">
+         <button style="background: transparent" on="tap:consent.prompt(consent=SourcePoint)">Privacy Settings (GDPR)</button>
+      </div>
+      <div id="ccpa-consent-ui">
+         <button style="background: transparent" on="tap:consent.prompt(consent=SourcePoint)">Do not sell my personal information (CCPA)</button>
+      </div>
+   </body>
+</html>
