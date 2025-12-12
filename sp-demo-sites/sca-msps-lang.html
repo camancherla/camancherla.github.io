@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    
+<script>
+    window._sp_queue = [];
+    window._sp_ = {
+        config: {
+            accountId: 22,
+            baseEndpoint: 'https://preprod-cdn.privacy-mgmt.com',
+            propertyHref: 'https://sca-msps-lang',
+     //       joinHref: true,
+     //       gdpr: { includeTcfApi: false},
+            usnat: { includeGppApi: false},
+            events: {
+                onMessageChoiceSelect: function (message_type, choice_id, choice_type_id) {
+  		        	console.log('[event] onMessageReceiveData', arguments);
+      			},
+				onMessageReady: function(message_type) {
+   					console.log('[event] onMessageReady', arguments);
+				},
+                onMessageChoiceError: function() {
+                    console.log('[event] onMessageChoiceError', arguments);
+                },
+                onPrivacyManagerAction: function() {
+                    console.log('[event] onPrivacyManagerAction', arguments);
+                },
+                onPMCancel: function() {
+                    console.log('[event] onPMCancel', arguments);
+                },
+                onMessageReceiveData: function() {
+                    console.log('[event] onMessageReceiveData', arguments);
+                },
+                onSPPMObjectReady: function() {
+                    console.log('[event] onSPPMObjectReady', arguments);
+                },
+                onConsentReady: function (consentUUID, euconsent) {
+                    console.log('[event] onConsentReady', arguments);
+                },
+                onError: function() {
+                    console.log('[event] onError', arguments);
+                },
+            }
+        }
+    }
+    </script>
+    
+    <script src='https://preprod-cdn.privacy-mgmt.com/unified/wrapperMessagingWithoutDetection.js' async></script>
+  </head>  
+   <body> 
+
+    <a href="javascript:void(0);" onclick="window._sp_.usnat.loadPrivacyManager(1252745);">
+        Load PM
+    </a>
+
+   </body>
+</html>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Universal Consents and Preferences - sca-ucpm4 </title>
+    <script>
+        window._sp_queue = [];
+        window._sp_ = {
+            config: {
+                accountId: 22,
+                baseEndpoint: 'https://preprod-cdn.privacy-mgmt.com',
+                propertyHref: "https://sca-ucpm4",
+                preference_mgmt: {id: 'chaitanya1@sourcepoint.com'},
+                events: {
+                    onMessageReady: function (message_type) {
+                        console.log('onMessageReady fired');
+                        console.log('message_type: ' + message_type);
+                    },
+                    onPrefCancel: function (message_type) {
+                        console.log('onPrefCancel fired');
+                        console.log('message_type: ' + message_type);
+                    },
+                    onMessageReceiveData: function (message_type, data) {
+                        console.log('onMessageReceiveData fired');
+                        console.log('message_type' + message_type);
+                        console.log('prtnUUID: ' + data.prtnUUID);
+                        console.log('messageId: ' + data.messageId);
+                        console.log('messageDescription: ' + data.msgDescription);
+                        console.log('bucket: ' + data.bucket);
+                        console.log('categoryId: ' + data.categoryId);
+                        console.log('subCategoryId: ' + data.subCategoryId);
+                        console.log(JSON.stringify(data));
+                    },
+                    onSPReady: function () {
+                        console.log('onSPReady fired');
+                    },
+                    onError: function (message_type, errorCode, errorObject, userReset){
+                        console.log('onError fired');
+                        console.log('message_type: ' + message_type);
+                        console.log('errorCode: ' + errorCode);
+                        console.log(errorObject);
+                        console.log('userReset: ' + userReset);
+                    },
+                }
+            }
+        };
+    </script>
+    <script src='https://preprod-cdn.privacy-mgmt.com/unified/wrapperMessagingWithoutDetection.js' async></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.5;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        button {
+            background-color: #0056b3;
+            color: #ffffff;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        button:hover, button:focus {
+            background-color: #004494;
+            outline: 2px solid #ffffff;
+            outline-offset: 2px;
+        }
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                transition: none !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <button onclick="window._sp_.preferences.loadPreferenceCenter(1269653, 'chaitanya1@sourcepoint.com');">UCPM Resurface PM </button>
+</body>
+</html>
