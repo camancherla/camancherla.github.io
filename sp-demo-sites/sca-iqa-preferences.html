@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Preferences Message - IQA - Resurface</title>
+    <script>
+        window._sp_queue = [];
+        window._sp_ = {
+            config: {
+                accountId: 1810,
+                baseEndpoint: 'https://cdn.privacy-mgmt.com',
+                propertyHref: "https://sca-iqa-preferences",
+                preference_mgmt: {},
+                events: {
+                    onMessageReady: function (message_type) {
+                        console.log('onMessageReady fired');
+                        console.log('message_type: ' + message_type);
+                    },
+                    onPreferenceMgmtCancel: function (message_type) {
+                    console.log('message_type: ' + message_type)
+                    },
+                    onPreferenceMgmtAction: function(message_type, actionType) {
+                    console.log('message_type: ' + message_type);
+                    console.log('actionType: ' + actionType);
+                    },
+                    onPreferenceMgmtActionComplete: function(message_type, actionType) {
+                    console.log('message_type: ' + message_type);
+                    console.log('actionType: ' + actionType);
+                    },
+
+                    onSPReady: function () {
+                        console.log('onSPReady fired');
+                    },
+                    onMessageReceiveData: function (message_type, data) {
+                        console.log('message_type' + message_type);
+                        console.log('prtnUUID: ' + data.prtnUUID);
+                        console.log('messageId: ' + data.messageId);
+                        console.log('messageDescription: ' + data.messageDescription);
+                        console.log('bucket: ' + data.bucket);
+                        console.log('categoryId: ' + data.categoryId);
+                        console.log('subCategoryId: ' + data.subCategoryId);
+                        console.log(JSON.stringify(data));
+                        },
+                    onError: function (message_type, errorCode, errorObject, userReset){
+                        console.log('onError fired');
+                        console.log('message_type: ' + message_type);
+                        console.log('errorCode: ' + errorCode);
+                        console.log(errorObject);
+                        console.log('userReset: ' + userReset);
+                    }
+                }
+            }
+        };
+    </script>
+    <script src='https://cdn.privacy-mgmt.com/unified/wrapperMessagingWithoutDetection.js' async></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.5;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        button {
+            background-color: #0056b3;
+            color: #ffffff;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        button:hover, button:focus {
+            background-color: #004494;
+            outline: 2px solid #ffffff;
+            outline-offset: 2px;
+        }
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                transition: none !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Preferences Demo</h1>
+    </header>
+    <main>
+        <button onclick="window._sp_.preferences.loadPreferenceCenter(1329778);" type="button" aria-label="Open UCPM Resurface Preference Manager">
+            UCPM Resurface PM
+        </button>
+    </main>
+</body>
+</html>

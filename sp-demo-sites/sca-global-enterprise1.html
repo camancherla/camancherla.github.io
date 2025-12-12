@@ -1,0 +1,65 @@
+```html
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Global Enterprise - sca-global-enterprise1 - Pointing to prod. Add query param to point to preprod</title>
+   
+    <script>
+        window._sp_queue = [];
+        window._sp_ = {
+            config: {
+                accountId: 22,
+                baseEndpoint: 'https://cdn.privacy-mgmt.com',
+                propertyHref: 'https://sca-global-enterprise1',
+                authId: "chaitanya1@sourcepoint.com",
+                globalcmp: {},
+                events: { 
+                    onMessageReady: function() {
+                        console.log('[event] onMessageReady', arguments);
+                    },
+                    onMessageReceiveData: function() {
+                        console.log('[event] onMessageReceiveData', arguments);
+                    },
+                    onSPReady: function() {
+                        console.log('[event] onSPReady', arguments);
+                    },
+                    onError: function() {
+                        console.log('[event] onError', arguments);
+                    },
+                    onMessageChoiceSelect: function() {
+                        console.log('[event] onMessageChoiceSelect', arguments);
+                    },
+                    onConsentReady: function(consentUUID, euconsent) {
+                        console.log('[event] onConsentReady', arguments);
+                    },
+                    onPrivacyManagerAction: function() {
+                        console.log('[event] onPrivacyManagerAction', arguments);
+                    },
+                    onPMCancel: function() {
+                        console.log('[event] onPMCancel', arguments);
+                    },
+                    onMessageInactivityTimeout: function () {
+                        console.log('[event] onMessageInactivityTimeout', arguments);
+                    }
+                }
+            }
+        };
+    </script>
+    <script src='https://cdn.privacy-mgmt.com/unified/wrapperMessagingWithoutDetection.js' async></script>
+
+</head>
+<body>
+
+    <h1>Test Page for Global Enterprise</h1>
+    <br><br>
+    <button onclick="window._sp_.globalcmp.loadPrivacyManagerModal(1346652)">Global Enterprise PM</button>
+    <h2>
+        Pointing to prod cdn. Add query param to point to preprod cdn
+    </h2>
+    <br><br>
+
+</body>
+</html>
+```

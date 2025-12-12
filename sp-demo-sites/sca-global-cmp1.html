@@ -1,0 +1,62 @@
+   
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Global Enterprise - sca-global-cmp1</title>
+   
+   
+   <script>
+    window._sp_queue = [];
+    window._sp_ = {
+        config: {
+            accountId: 22,
+            baseEndpoint: 'https://preprod-cdn.privacy-mgmt.com',
+            propertyHref: 'https://sca-global-cmp1',
+           
+            authId: "chaitanya1@sourcepoint.com",
+
+            globalcmp:{},
+
+            events: { onMessageReady: function() {
+              console.log('[event] onMessageReady', arguments);
+            },
+            onMessageReceiveData: function() {
+                          console.log('[event] onMessageReceiveData', arguments);
+                        },
+            onSPReady: function() {
+                          console.log('[event] onSPReady', arguments);
+                        },
+            onError: function() {
+                          console.log('[event] onError', arguments);
+                        },
+            onMessageChoiceSelect: function() {
+                          console.log('[event] onMessageChoiceSelect', arguments);
+                        },
+            onConsentReady: function(consentUUID, euconsent) {
+                          console.log('[event] onConsentReady', arguments);
+                        },
+            onPrivacyManagerAction: function() {
+                          console.log('[event] onPrivacyManagerAction', arguments);
+                        },
+            onPMCancel: function() {
+                          console.log('[event] onPMCancel', arguments);
+                        } }
+                    }
+                }
+    </script>
+    <script src='https://preprod-cdn.privacy-mgmt.com/unified/wrapperMessagingWithoutDetection.js' async></script>
+
+</head>
+<body>
+
+<h1>Test Page for Global Enterprise</h1>
+<br><br>
+<button onclick="window._sp_.globalcmp.loadPrivacyManagerModal(1319373)">Global Enterprise PM</button>
+<br><br>
+
+
+
+</body>
+</html>
